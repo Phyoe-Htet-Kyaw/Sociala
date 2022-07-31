@@ -1,3 +1,8 @@
+<?php 
+    include 'master/init/init.php';
+    $home = new Home;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -179,7 +184,7 @@
             </div>
             
 
-            <a href="default-settings.html" class="p-0 ms-3 menu-icon"><img src="assets/images/profile-4.png" alt="user" class="w40 mt--1"></a>
+            <a href="settings.php" class="p-0 ms-3 menu-icon"><img src="assets/images/profile-4.png" alt="user" class="w40 mt--1"></a>
             
         </div>
         <!-- navigation top -->

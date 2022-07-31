@@ -1,0 +1,38 @@
+tbl_post
+=========
+- id
+- user_id
+- description
+- post_type_id (enum)
+
+tbl_post_photo
+==============
+- id
+- post_id
+- photo
+
+tbl_post_video
+==============
+- id
+- post_id
+- video
+
+(No Admin, only DB)
+tbl_like
+=========
+- id
+- post_id
+- user_id
+
+tbl_comment
+=========
+- id
+- post_id
+- comment
+- user_id
+
+
+post_type_id (enum)
+1. text
+2. photo
+3. video
