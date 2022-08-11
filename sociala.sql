@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 31, 2022 at 05:27 AM
+-- Generation Time: Aug 11, 2022 at 05:55 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -49,7 +49,7 @@ INSERT INTO `tbl_city` (`id`, `name`, `country_id`, `created_at`, `updated_at`, 
 (6, 'Santiago', 55, '2022-07-30 22:35:38', NULL, NULL),
 (7, 'Cairo', 54, '2022-07-30 22:36:25', NULL, NULL),
 (8, 'Port Moresby', 53, '2022-07-30 22:37:13', NULL, NULL),
-(9, 'Taipei', 52, '2022-07-30 22:37:39', NULL, NULL),
+(9, 'Taipei', 52, '2022-07-30 22:37:39', '2022-08-11 06:40:19', NULL),
 (10, 'Seoul', 51, '2022-07-30 22:38:09', NULL, NULL),
 (11, 'Pyongyang', 50, '2022-07-30 22:38:42', NULL, NULL),
 (12, 'Manila', 48, '2022-07-30 22:38:59', NULL, NULL),
@@ -65,7 +65,25 @@ INSERT INTO `tbl_city` (`id`, `name`, `country_id`, `created_at`, `updated_at`, 
 (22, 'Stockholm', 38, '2022-07-30 22:53:22', NULL, NULL),
 (23, 'Helsinki', 37, '2022-07-30 22:54:26', NULL, NULL),
 (24, 'Ulaanbaatar', 36, '2022-07-30 22:56:16', NULL, NULL),
-(25, 'Nur-Sultan', 35, '2022-07-30 22:56:53', NULL, NULL);
+(25, 'Nur-Sultan', 35, '2022-07-30 22:56:53', NULL, NULL),
+(26, 'Washington DC', 12, '2022-08-11 00:11:46', NULL, NULL),
+(27, 'Islamabad', 33, '2022-08-11 04:48:39', '2022-08-11 06:48:39', NULL),
+(28, 'Lusaka', 56, '2022-08-11 00:18:32', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_comment`
+--
+
+CREATE TABLE `tbl_comment` (
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -76,7 +94,7 @@ INSERT INTO `tbl_city` (`id`, `name`, `country_id`, `created_at`, `updated_at`, 
 CREATE TABLE `tbl_country` (
   `id` int(11) NOT NULL,
   `name` varchar(25) NOT NULL,
-  `created_at` datetime DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -86,61 +104,77 @@ CREATE TABLE `tbl_country` (
 --
 
 INSERT INTO `tbl_country` (`id`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Myanmar', '2022-07-30 20:49:37', NULL, NULL),
-(2, 'India', '2022-07-30 17:41:07', NULL, NULL),
-(3, 'China', '2022-07-30 17:41:14', '2022-07-30 17:47:18', NULL),
-(4, 'Thailand', '2022-07-30 17:47:35', NULL, NULL),
-(5, 'Laos', '2022-07-30 17:47:40', NULL, NULL),
-(6, 'Cambodia', '2022-07-30 17:47:46', NULL, NULL),
-(7, 'Bangladesh', '2022-07-30 17:48:20', NULL, NULL),
-(8, 'Vietnam', '2022-07-30 17:48:32', NULL, NULL),
-(9, 'Indonesia', '2022-07-30 17:48:39', NULL, NULL),
-(10, 'Singapore', '2022-07-30 17:49:41', NULL, NULL),
-(11, 'Malaysia', '2022-07-30 17:49:49', NULL, NULL),
-(12, 'United States of America', '2022-07-30 17:51:23', NULL, NULL),
-(13, 'Russia', '2022-07-30 17:51:29', NULL, NULL),
-(14, 'Germany', '2022-07-30 17:51:39', NULL, NULL),
-(15, 'Italy', '2022-07-30 17:51:46', NULL, NULL),
-(16, 'Spain', '2022-07-30 17:51:50', NULL, NULL),
-(17, 'Canada', '2022-07-30 17:52:37', NULL, NULL),
-(18, 'Turkey', '2022-07-30 17:52:56', NULL, NULL),
-(19, 'France', '2022-07-30 17:53:08', NULL, NULL),
-(20, 'Australia', '2022-07-30 17:53:41', NULL, NULL),
-(21, 'New Zealand', '2022-07-30 17:54:14', NULL, NULL),
-(22, 'United Arab Emirates', '2022-07-30 17:55:22', NULL, NULL),
-(23, 'Mexico', '2022-07-30 17:56:33', NULL, NULL),
-(24, 'Argentina', '2022-07-30 17:56:47', NULL, NULL),
-(25, 'Brazil', '2022-07-30 17:56:52', NULL, NULL),
-(26, 'Peru', '2022-07-30 17:57:19', NULL, NULL),
-(27, 'Colombia', '2022-07-30 17:57:36', NULL, NULL),
-(28, 'Paraguay', '2022-07-30 17:57:54', NULL, NULL),
-(29, 'Bolivia', '2022-07-30 17:58:24', NULL, NULL),
-(30, 'Uruguay', '2022-07-30 17:58:45', NULL, NULL),
-(31, 'Iran', '2022-07-30 17:59:11', NULL, NULL),
-(32, 'Iraq', '2022-07-30 17:59:17', NULL, NULL),
-(33, 'Pakistan', '2022-07-30 17:59:40', NULL, NULL),
-(34, 'Afghanistan', '2022-07-30 17:59:56', '2022-07-30 18:12:02', NULL),
-(35, 'Kazakhstan', '2022-07-30 18:00:25', NULL, NULL),
-(36, 'Mongolia', '2022-07-30 18:00:31', NULL, NULL),
-(37, 'Finland', '2022-07-30 18:00:42', NULL, NULL),
-(38, 'Sweden', '2022-07-30 18:00:55', NULL, NULL),
-(39, 'Norway', '2022-07-30 18:01:11', NULL, NULL),
-(40, 'Poland', '2022-07-30 18:01:26', NULL, NULL),
-(41, 'Ukraine', '2022-07-30 18:01:44', NULL, NULL),
-(42, 'Iceland', '2022-07-30 18:02:02', NULL, NULL),
-(43, 'Ireland', '2022-07-30 18:02:14', NULL, NULL),
-(44, 'United Kingdom', '2022-07-30 18:02:25', NULL, NULL),
-(45, 'Romania', '2022-07-30 18:02:40', '2022-07-31 05:17:42', NULL),
-(46, 'Yeman', '2022-07-30 18:03:00', NULL, NULL),
-(47, 'Oman', '2022-07-30 18:03:04', NULL, NULL),
-(48, 'Philippines', '2022-07-30 18:03:42', NULL, NULL),
-(49, 'Japan', '2022-07-30 18:03:54', NULL, NULL),
-(50, 'North Korea', '2022-07-30 18:04:08', NULL, NULL),
-(51, 'South Korea', '2022-07-30 18:04:15', NULL, NULL),
-(52, 'Taiwan', '2022-07-30 18:04:47', NULL, NULL),
-(53, 'Papua New Guinea', '2022-07-30 18:05:15', NULL, NULL),
-(54, 'Egypt', '2022-07-30 18:05:43', NULL, NULL),
-(55, 'Chile', '2022-07-30 18:05:54', NULL, NULL);
+(1, 'Myanmar', '2022-07-30 14:19:37', NULL, NULL),
+(2, 'India', '2022-07-30 11:11:07', NULL, NULL),
+(3, 'China', '2022-07-30 11:11:14', '2022-07-30 17:47:18', NULL),
+(4, 'Thailand', '2022-07-30 11:17:35', NULL, NULL),
+(5, 'Laos', '2022-07-30 11:17:40', NULL, NULL),
+(6, 'Cambodia', '2022-07-30 11:17:46', NULL, NULL),
+(7, 'Bangladesh', '2022-07-30 11:18:20', NULL, NULL),
+(8, 'Vietnam', '2022-07-30 11:18:32', NULL, NULL),
+(9, 'Indonesia', '2022-07-30 11:18:39', NULL, NULL),
+(10, 'Singapore', '2022-07-30 11:19:41', NULL, NULL),
+(11, 'Malaysia', '2022-07-30 11:19:49', NULL, NULL),
+(12, 'United States', '2022-08-11 04:36:38', '2022-08-11 06:36:38', NULL),
+(13, 'Russia', '2022-07-30 11:21:29', NULL, NULL),
+(14, 'Germany', '2022-07-30 11:21:39', NULL, NULL),
+(15, 'Italy', '2022-07-30 11:21:46', NULL, NULL),
+(16, 'Spain', '2022-07-30 11:21:50', NULL, NULL),
+(17, 'Canada', '2022-07-30 11:22:37', NULL, NULL),
+(18, 'Turkey', '2022-07-30 11:22:56', NULL, NULL),
+(19, 'France', '2022-07-30 11:23:08', NULL, NULL),
+(20, 'Australia', '2022-07-30 11:23:41', NULL, NULL),
+(21, 'New Zealand', '2022-07-30 11:24:14', NULL, NULL),
+(22, 'United Arab Emirates', '2022-07-30 11:25:22', NULL, NULL),
+(23, 'Mexico', '2022-07-30 11:26:33', NULL, NULL),
+(24, 'Argentina', '2022-07-30 11:26:47', NULL, NULL),
+(25, 'Brazil', '2022-07-30 11:26:52', NULL, NULL),
+(26, 'Peru', '2022-07-30 11:27:19', NULL, NULL),
+(27, 'Colombia', '2022-07-30 11:27:36', NULL, NULL),
+(28, 'Paraguay', '2022-07-30 11:27:54', NULL, NULL),
+(29, 'Bolivia', '2022-07-30 11:28:24', NULL, NULL),
+(30, 'Uruguay', '2022-07-30 11:28:45', NULL, NULL),
+(31, 'Iran', '2022-07-30 11:29:11', NULL, NULL),
+(32, 'Iraq', '2022-07-30 11:29:17', NULL, NULL),
+(33, 'Pakistan', '2022-07-30 11:29:40', NULL, NULL),
+(34, 'Afghanistan', '2022-07-30 11:29:56', '2022-07-30 18:12:02', NULL),
+(35, 'Kazakhstan', '2022-07-30 11:30:25', NULL, NULL),
+(36, 'Mongolia', '2022-07-30 11:30:31', NULL, NULL),
+(37, 'Finland', '2022-07-30 11:30:42', NULL, NULL),
+(38, 'Sweden', '2022-07-30 11:30:55', NULL, NULL),
+(39, 'Norway', '2022-07-30 11:31:11', NULL, NULL),
+(40, 'Poland', '2022-07-30 11:31:26', NULL, NULL),
+(41, 'Ukraine', '2022-07-30 11:31:44', NULL, NULL),
+(42, 'Iceland', '2022-07-30 11:32:02', NULL, NULL),
+(43, 'Ireland', '2022-07-30 11:32:14', NULL, NULL),
+(44, 'United Kingdom', '2022-07-30 11:32:25', NULL, NULL),
+(45, 'Romania', '2022-07-30 11:32:40', '2022-07-31 05:17:42', NULL),
+(46, 'Yeman', '2022-07-30 11:33:00', NULL, NULL),
+(47, 'Oman', '2022-07-30 11:33:04', NULL, NULL),
+(48, 'Philippines', '2022-07-30 11:33:42', NULL, NULL),
+(49, 'Japan', '2022-07-30 11:33:54', NULL, NULL),
+(50, 'North Korea', '2022-07-30 11:34:08', NULL, NULL),
+(51, 'South Korea', '2022-07-30 11:34:15', NULL, NULL),
+(52, 'Taiwan', '2022-07-30 11:34:47', NULL, NULL),
+(53, 'Papua New Guinea', '2022-07-30 11:35:15', NULL, NULL),
+(54, 'Egypt', '2022-07-30 11:35:43', NULL, NULL),
+(55, 'Chile', '2022-07-30 11:35:54', NULL, NULL),
+(56, 'Zambia', '2022-08-11 00:17:55', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_like`
+--
+
+CREATE TABLE `tbl_like` (
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -176,7 +210,84 @@ INSERT INTO `tbl_position` (`id`, `name`, `created_at`, `updated_at`, `deleted_a
 (13, 'Civil Engineer', '2022-07-30 11:37:08', NULL, NULL),
 (14, 'Electrical Engineer', '2022-07-30 11:37:25', NULL, NULL),
 (15, 'Architect', '2022-07-30 16:43:10', '2022-07-30 18:43:10', NULL),
-(16, 'Fashion Designer', '2022-07-30 11:37:58', NULL, NULL);
+(16, 'Fashion Designer', '2022-07-30 11:37:58', NULL, NULL),
+(17, 'Procurement Manager', '2022-08-11 04:25:55', '2022-08-11 06:25:55', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_post`
+--
+
+CREATE TABLE `tbl_post` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `description` longtext NOT NULL,
+  `post_type_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_post`
+--
+
+INSERT INTO `tbl_post` (`id`, `user_id`, `description`, `post_type_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', NULL, '2022-08-11 11:11:02', '2022-08-11 13:08:10', NULL),
+(2, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga!', NULL, '2022-08-11 12:18:53', '2022-08-11 14:18:53', NULL),
+(3, 1, 'Test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test', NULL, '2022-08-11 07:47:11', NULL, NULL),
+(4, 1, 'Post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post', NULL, '2022-08-11 07:48:39', NULL, NULL),
+(5, 1, 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', NULL, '2022-08-11 10:49:21', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_post_photo`
+--
+
+CREATE TABLE `tbl_post_photo` (
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_post_photo`
+--
+
+INSERT INTO `tbl_post_photo` (`id`, `post_id`, `photo`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'POST_1660228585_portfolio-1.jpg', '2022-08-11 14:41:03', '2022-08-11 16:36:25', NULL),
+(2, 1, 'POST_1660228594_portfolio-2.jpg', '2022-08-11 14:38:18', '2022-08-11 16:38:18', NULL),
+(3, 2, 'POST_1660228641_portfolio-3.jpg', '2022-08-11 15:17:53', '2022-08-11 17:17:53', NULL),
+(4, 3, 'POST_1660228673_portfolio-4.jpg', '2022-08-11 15:18:14', '2022-08-11 17:18:14', NULL),
+(5, 3, 'POST_1660228743_portfolio-5.jpg', '2022-08-11 15:18:44', '2022-08-11 17:18:44', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_post_video`
+--
+
+CREATE TABLE `tbl_post_video` (
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `video` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_post_video`
+--
+
+INSERT INTO `tbl_post_video` (`id`, `post_id`, `video`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 4, 'POST_1660232790_video-1.mp4', '2022-08-11 15:46:30', '2022-08-11 17:46:30', NULL),
+(2, 5, 'POST_1660232736_video-2.mp4', '2022-08-11 15:47:14', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -243,9 +354,33 @@ ALTER TABLE `tbl_country`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_like`
+--
+ALTER TABLE `tbl_like`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_position`
 --
 ALTER TABLE `tbl_position`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_post`
+--
+ALTER TABLE `tbl_post`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_post_photo`
+--
+ALTER TABLE `tbl_post_photo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_post_video`
+--
+ALTER TABLE `tbl_post_video`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -268,19 +403,43 @@ ALTER TABLE `tbl_user_info`
 -- AUTO_INCREMENT for table `tbl_city`
 --
 ALTER TABLE `tbl_city`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tbl_country`
 --
 ALTER TABLE `tbl_country`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
+--
+-- AUTO_INCREMENT for table `tbl_like`
+--
+ALTER TABLE `tbl_like`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_position`
 --
 ALTER TABLE `tbl_position`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `tbl_post`
+--
+ALTER TABLE `tbl_post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_post_photo`
+--
+ALTER TABLE `tbl_post_photo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_post_video`
+--
+ALTER TABLE `tbl_post_video`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
