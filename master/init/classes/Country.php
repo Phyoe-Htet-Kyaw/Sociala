@@ -25,7 +25,7 @@
         }
 
         public function show(){
-            $sql = "SELECT * FROM tbl_country WHERE deleted_at IS NULL ORDER BY created_at DESC";
+            $sql = "SELECT * FROM tbl_country WHERE deleted_at IS NULL ORDER BY name ASC";
             $stmt = $this->con->prepare($sql);
             $stmt->execute();
             $res = $stmt->fetchAll(PDO::FETCH_OBJ);

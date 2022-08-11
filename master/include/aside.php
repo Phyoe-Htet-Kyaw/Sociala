@@ -67,6 +67,30 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="post_index.php" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Post
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="photo_index.php" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Photos
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="video_index.php" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Videos
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

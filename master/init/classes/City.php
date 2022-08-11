@@ -26,7 +26,7 @@
         }
 
         public function show(){
-            $sql = "SELECT tbl_city.id, tbl_city.name, tbl_country.name AS country FROM tbl_city INNER JOIN tbl_country ON tbl_city.country_id = tbl_country.id WHERE tbl_city.deleted_at IS NULL ORDER BY tbl_city.created_at DESC;";
+            $sql = "SELECT tbl_city.id, tbl_city.name, tbl_country.name AS country FROM tbl_city INNER JOIN tbl_country ON tbl_city.country_id = tbl_country.id WHERE tbl_city.deleted_at IS NULL ORDER BY tbl_city.name ASC;";
             $stmt = $this->con->prepare($sql);
             $stmt->execute();
             $res = $stmt->fetchAll(PDO::FETCH_OBJ);
