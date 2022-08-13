@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 13, 2022 at 06:15 AM
+-- Generation Time: Aug 13, 2022 at 07:30 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -234,12 +234,12 @@ CREATE TABLE `tbl_post` (
 --
 
 INSERT INTO `tbl_post` (`id`, `user_id`, `description`, `post_type_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', 'video', '2022-08-13 04:07:05', '2022-08-13 06:07:05', NULL),
-(2, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga!', 'photo', '2022-08-13 04:06:57', '2022-08-13 06:06:57', NULL),
+(1, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', 'photo', '2022-08-13 04:48:54', '2022-08-13 06:07:05', NULL),
+(2, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga!', 'video', '2022-08-13 04:49:12', '2022-08-13 06:06:57', NULL),
 (3, 1, 'Test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test', 'photo', '2022-08-13 04:07:40', '2022-08-13 06:07:40', NULL),
-(4, 1, 'Post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post', 'text', '2022-08-13 04:07:31', '2022-08-13 06:07:31', NULL),
-(5, 1, 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', 'text', '2022-08-13 04:07:21', '2022-08-13 06:07:21', NULL),
-(6, 1, 'New post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post', 'text', '2022-08-12 23:21:15', NULL, NULL),
+(4, 1, 'Post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post', 'video', '2022-08-13 04:48:43', '2022-08-13 06:07:31', NULL),
+(5, 1, 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', 'photo', '2022-08-13 05:08:29', '2022-08-13 06:07:21', NULL),
+(6, 1, 'New post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post', 'photo', '2022-08-13 05:08:37', NULL, NULL),
 (7, 1, 'New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo ', 'photo', '2022-08-12 23:22:21', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -263,10 +263,10 @@ CREATE TABLE `tbl_post_photo` (
 
 INSERT INTO `tbl_post_photo` (`id`, `post_id`, `photo`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 'POST_1660228585_portfolio-1.jpg', '2022-08-11 14:41:03', '2022-08-11 16:36:25', NULL),
-(2, 1, 'POST_1660228594_portfolio-2.jpg', '2022-08-11 14:38:18', '2022-08-11 16:38:18', NULL),
-(3, 2, 'POST_1660228641_portfolio-3.jpg', '2022-08-11 15:17:53', '2022-08-11 17:17:53', NULL),
-(4, 3, 'POST_1660228673_portfolio-4.jpg', '2022-08-11 15:18:14', '2022-08-11 17:18:14', NULL),
-(5, 3, 'POST_1660228743_portfolio-5.jpg', '2022-08-11 15:18:44', '2022-08-11 17:18:44', NULL);
+(2, 3, 'POST_1660228594_portfolio-2.jpg', '2022-08-13 04:50:44', '2022-08-11 16:38:18', NULL),
+(3, 7, 'POST_1660228641_portfolio-3.jpg', '2022-08-13 04:51:03', '2022-08-11 17:17:53', NULL),
+(4, 5, 'POST_1660228673_portfolio-4.jpg', '2022-08-13 04:52:16', '2022-08-11 17:18:14', NULL),
+(5, 6, 'POST_1660228743_portfolio-5.jpg', '2022-08-13 04:52:23', '2022-08-11 17:18:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -288,8 +288,8 @@ CREATE TABLE `tbl_post_video` (
 --
 
 INSERT INTO `tbl_post_video` (`id`, `post_id`, `video`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 4, 'POST_1660232790_video-1.mp4', '2022-08-11 15:46:30', '2022-08-11 17:46:30', NULL),
-(2, 5, 'POST_1660232736_video-2.mp4', '2022-08-11 15:47:14', NULL, NULL);
+(1, 2, 'POST_1660232790_video-1.mp4', '2022-08-13 04:51:13', '2022-08-11 17:46:30', NULL),
+(2, 4, 'POST_1660232736_video-2.mp4', '2022-08-13 04:51:17', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -314,7 +314,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `email`, `password`, `phone`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Phyoe', 'Htet Kyaw', 'pphyoe126@gmail.com', '123456789', NULL, '2022-07-30 05:31:43', NULL, NULL);
+(1, 'Phyoe', 'Htet Kyaw', 'pphyoe126@gmail.com', '$2y$10$LTh9aSYeqgW8PBBPFkHqjufyek2p.19FkLb75OTMV5dQYPyK2ix6.', NULL, '2022-08-13 04:35:39', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -344,7 +344,7 @@ CREATE TABLE `tbl_user_info` (
 --
 
 INSERT INTO `tbl_user_info` (`id`, `user_id`, `job_title`, `position_id`, `country_id`, `city_id`, `postcode`, `address`, `profile_image`, `cover_photo`, `about_description`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Senior Web Developer', 8, 1, 1, 101010, 'No(54), Main Road, Red Hill Township', 'dajfldsja;lfjasjfoiiwee.jpg', 'asdjflkjasdlkadksfasfafdfa.jpg', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', '2022-08-13 04:15:23', NULL, NULL);
+(1, 1, 'Senior Web Developer', 8, 1, 1, 101010, 'No(54), Main Road, Red Hill Township', 'USER_1658255809_avatar5.png', 'USER_1658255638_avatar2.png', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', '2022-08-13 04:39:45', NULL, NULL);
 
 --
 -- Indexes for dumped tables

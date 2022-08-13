@@ -28,7 +28,7 @@
         }
 
         public function show(){
-            $sql = "SELECT tbl_post.id, tbl_user.first_name, tbl_user.last_name, tbl_post.description, tbl_post.post_type_id FROM tbl_post INNER JOIN tbl_user ON tbl_post.user_id = tbl_user.id WHERE tbl_post.deleted_at IS NULL ORDER BY tbl_post.created_at DESC;";
+            $sql = "SELECT tbl_post.id, tbl_user.first_name, tbl_user.last_name, tbl_post_photo.photo, tbl_post_video.video, tbl_post.description, tbl_post.post_type_id FROM tbl_post INNER JOIN tbl_user ON tbl_post.user_id = tbl_user.id LEFT JOIN tbl_post_photo ON tbl_post.id = tbl_post_photo.post_id LEFT JOIN tbl_post_video ON tbl_post.id = tbl_post_video.post_id WHERE tbl_post.deleted_at IS NULL ORDER BY tbl_post.created_at DESC;";
             $stmt = $this->con->prepare($sql);
             $stmt->execute();
             $res = $stmt->fetchAll(PDO::FETCH_OBJ);

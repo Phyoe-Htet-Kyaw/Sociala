@@ -307,58 +307,41 @@
                                 </div>
                             </div> -->
 
-                            
-                            <!-- video -->
-                            <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3">
-                                <div class="card-body p-0 d-flex">
-                                    <figure class="avatar me-3"><img src="assets/images/user-8.png" alt="image" class="shadow-sm rounded-circle w45"></figure>
-                                    <h4 class="fw-700 text-grey-900 font-xssss mt-1">Anthony Daugloi <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">2 hour ago</span></h4>
-                                    <a href="#" class="ms-auto"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a>
-                                </div>
-                                <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
-                                    <a href="default-video.html" class="video-btn">
-                                        <video autoplay loop class="float-right w-100">
-                                            <source src="assets/images/v-1.mp4" type="video/mp4">
-                                        </video>
-                                    </a>
-                                </div>
-                                <div class="card-body p-0 me-lg-5">
-                                    <p class="fw-500 text-grey-500 lh-26 font-xssss w-100 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus <a href="#" class="fw-600 text-primary ms-2">See more</a></p>
-                                </div>
-                                <div class="card-body d-flex p-0">
-                                    <a href="#" class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"><i class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i> <i class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i>2.8K Like</a>
-                                    <div class="emoji-wrap">
-                                        <ul class="emojis list-inline mb-0">
-                                            <li class="emoji list-inline-item"><i class="em em---1"></i> </li>
-                                            <li class="emoji list-inline-item"><i class="em em-angry"></i></li>
-                                            <li class="emoji list-inline-item"><i class="em em-anguished"></i> </li>
-                                            <li class="emoji list-inline-item"><i class="em em-astonished"></i> </li>
-                                            <li class="emoji list-inline-item"><i class="em em-blush"></i></li>
-                                            <li class="emoji list-inline-item"><i class="em em-clap"></i></li>
-                                            <li class="emoji list-inline-item"><i class="em em-cry"></i></li>
-                                            <li class="emoji list-inline-item"><i class="em em-full_moon_with_face"></i></li>
-                                        </ul>
-                                    </div>
-                                    <a href="#" class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"></i><span class="d-none-xss">22 Comment</span></a>
-                                    <a href="#" class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span class="d-none-xs">Share</span></a>
-                                </div>
-                            </div>
-
-                            <!-- photo -->
+                            <?php
+                                $post = new Post;
+                                $post_data = $post->show();
+                                foreach($post_data as $item){
+                            ?>
                             <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-0">
                                 <div class="card-body p-0 d-flex">
                                     <figure class="avatar me-3"><img src="assets/images/user-8.png" alt="image" class="shadow-sm rounded-circle w45"></figure>
-                                    <h4 class="fw-700 text-grey-900 font-xssss mt-1">Anthony Daugloi <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">2 hour ago</span></h4>
+                                    <h4 class="fw-700 text-grey-900 font-xssss mt-1"><?php echo $item->first_name; ?> <?php echo $item->last_name; ?><span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">2 hour ago</span></h4>
                                     <a href="#" class="ms-auto"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a>
                                 </div>
                                 <div class="card-body p-0 me-lg-5">
-                                    <p class="fw-500 text-grey-500 lh-26 font-xssss w-100 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus <a href="#" class="fw-600 text-primary ms-2">See more</a></p>
+                                    <p class="fw-500 text-grey-500 lh-26 font-xssss w-100 mb-2"><?php echo $item->description; ?><a href="#" class="fw-600 text-primary ms-2">See more</a></p>
                                 </div>
-                                <div class="card-body d-block p-0 mb-3">
-                                    <div class="row ps-2 pe-2">
-                                        <div class="col-sm-12 p-1"><a href="images/t-30.jpg" data-lightbox="roadtr"><img src="assets/images/t-31.jpg" class="rounded-3 w-100" alt="image"></a></div>                                        
-                                    </div>
-                                </div>
+                                    <?php
+                                        if($item->post_type_id == "photo"){
+                                    ?>
+                                        <div class="card-body d-block p-0 mb-3">
+                                            <div class="row ps-2 pe-2">
+                                                <div class="col-sm-12 p-1"><a href="" data-lightbox="roadtr"><img src="master/photos/<?php echo $item->photo; ?>" class="rounded-3 w-100" alt="image"></a></div>                                        
+                                            </div>
+                                        </div>
+                                    <?php
+                                        }else if($item->post_type_id == "video"){
+                                    ?>
+                                        <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
+                                            <a href="" class="video-btn">
+                                                <video autoplay loop class="float-right w-100">
+                                                    <source src="master/videos/<?php echo $item->video; ?>" type="video/mp4">
+                                                </video>
+                                            </a>
+                                        </div>
+                                    <?php
+                                        }
+                                    ?>
                                 <div class="card-body d-flex p-0">
                                     <a href="#" class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"><i class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i> <i class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i>2.8K Like</a>
                                     <div class="emoji-wrap">
@@ -377,7 +360,9 @@
                                     <a href="#" class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span class="d-none-xs">Share</span></a>
                                 </div>
                             </div>
- 
+                            <?php
+                                }
+                            ?>
 
                             <div class="card w-100 text-center shadow-xss rounded-xxl border-0 p-4 mb-3 mt-3">
                                 <div class="snippet mt-2 ms-auto me-auto" data-title=".dot-typing">
