@@ -47,7 +47,12 @@
                 </div>
                 <div class="col-12">
                     <div class="form-group">
-                        <input type="text" name="post_type" class="form-control" placeholder="Enter Post Type.">
+                        <label for="post_type">Choose Post Type</label>
+                        <select name="post_type" id="post_type" class="form-control">
+                            <option value="1">Text</option>
+                            <option value="2">Photo</option>
+                            <option value="3">Video</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-12">                  

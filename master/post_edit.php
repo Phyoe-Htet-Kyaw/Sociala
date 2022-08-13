@@ -50,9 +50,12 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="form-group">
-                        <input type="text" name="post_type" class="form-control" value="<?php echo $res->post_type_id; ?>">
-                    </div>
+                    <label for="post_type">Choose Post Type</label>
+                        <select name="post_type" id="post_type" class="form-control">
+                            <option value="1" <?php if($res->post_type_id == "text") echo "selected"; ?>>Text</option>
+                            <option value="2" <?php if($res->post_type_id == "photo") echo "selected"; ?>>Photo</option>
+                            <option value="3" <?php if($res->post_type_id == "video") echo "selected"; ?>>Video</option>
+                        </select>
                 </div>
                 <div class="col-12">                  
                     <div class="form-group">

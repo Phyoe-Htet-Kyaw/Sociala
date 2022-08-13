@@ -35,7 +35,7 @@
                       <td><?php echo $i; $i++; ?></td>
                       <td><?php echo $item->first_name . " " . $item->last_name; ?></td>
                       <td><?php echo $item->description; ?></td>
-                      <td><?php echo $item->post_type; ?></td>
+                      <td><?php echo $item->post_type_id; ?></td>
                       <td>
                         <a href="post_edit.php?id=<?php echo $item->id; ?>"><button type="button" class="btn btn-warning btn-sm">Edit</button></a>
                         <a href="post_delete.php?id=<?php echo $item->id; ?>"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
