@@ -21,6 +21,8 @@
                       <th>User</th>
                       <th>Post Description</th>
                       <th>Post Type</th>
+                      <th>Post Photo</th>
+                      <th>Post Video</th>
                       <th>Options</th>
                     </tr>
                   </thead>
@@ -36,6 +38,8 @@
                       <td><?php echo $item->first_name . " " . $item->last_name; ?></td>
                       <td><?php echo $item->description; ?></td>
                       <td><?php echo $item->post_type_id; ?></td>
+                      <td><?php if($item->photo != ""){ ?><img src="photos/<?php echo $item->photo; ?>" width="100" height="100"><?php } ?></td>
+                      <td><?php if($item->video != ""){ ?><video width="160" height="120" controls><source src="videos/<?php echo $item->video; ?>" type="video/mp4"></video><?php } ?></td>
                       <td>
                         <a href="post_edit.php?id=<?php echo $item->id; ?>"><button type="button" class="btn btn-warning btn-sm">Edit</button></a>
                         <a href="post_delete.php?id=<?php echo $item->id; ?>"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>

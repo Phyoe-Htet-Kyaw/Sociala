@@ -129,21 +129,36 @@
                             </div>
                             -->
 
-
-                            <div class="card w-100 shadow-xss rounded-xxl border-0 ps-4 pt-4 pe-4 pb-3 mb-3">
-                                <div class="card-body p-0">
-                                    <a href="#" class=" font-xssss fw-600 text-grey-500 card-body p-0 d-flex align-items-center"><i class="btn-round-sm font-xs text-primary feather-edit-3 me-2 bg-greylight"></i>Create Post</a>
+                            <?php
+                                $post = new Post;
+                                if($post->add($_POST, $_FILES)){
+                                    echo "<script>window.location.href='/Sociala/index.php'</script>";
+                                }
+                            ?>
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="card w-100 shadow-xss rounded-xxl border-0 ps-4 pt-4 pe-4 pb-3 mb-3">
+                                    <div class="card-body p-0">
+                                        <button type="submit" name="submit" href="" class=" font-xssss fw-600 text-grey-500 card-body p-0 d-flex align-items-center"><i class="btn-round-sm font-xs text-primary feather-edit-3 me-2 bg-greylight"></i>Create Post</button>
+                                    </div>
+                                    <div class="card-body p-0 mt-3 position-relative">
+                                        <?php
+                                            $user = new User;
+                                            $user_data = $user->userinfo();
+                                            foreach($user_data as $data){
+                                        ?>
+                                        <figure class="avatar position-absolute ms-2 mt-1 top-5"><img src="master/photos/<?php echo $data->profile_image; ?>" alt="image" class="shadow-sm rounded-circle w30"></figure>
+                                        <?php
+                                            }
+                                        ?>
+                                        <textarea name="description" class="h100 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg" cols="30" rows="10" placeholder="What's on your mind?"></textarea>
+                                    </div>
+                                    <div class="card-body d-flex p-0 mt-0">
+                                        <a href="#" class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"><i class="font-md text-danger feather-video me-2"></i><span class="d-none-xs">Live Video</span></a>
+                                        <a href="#" class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"><i class="font-md text-success feather-image me-2"></i><span class="d-none-xs">Photo/Video</span></a>
+                                        <a href="#" class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"><i class="font-md text-warning feather-camera me-2"></i><span class="d-none-xs">Feeling/Activity</span></a>
+                                    </div>
                                 </div>
-                                <div class="card-body p-0 mt-3 position-relative">
-                                    <figure class="avatar position-absolute ms-2 mt-1 top-5"><img src="assets/images/user-8.png" alt="image" class="shadow-sm rounded-circle w30"></figure>
-                                    <textarea name="message" class="h100 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg" cols="30" rows="10" placeholder="What's on your mind?"></textarea>
-                                </div>
-                                <div class="card-body d-flex p-0 mt-0">
-                                    <a href="#" class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"><i class="font-md text-danger feather-video me-2"></i><span class="d-none-xs">Live Video</span></a>
-                                    <a href="#" class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"><i class="font-md text-success feather-image me-2"></i><span class="d-none-xs">Photo/Video</span></a>
-                                    <a href="#" class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"><i class="font-md text-warning feather-camera me-2"></i><span class="d-none-xs">Feeling/Activity</span></a>
-                                </div>
-                            </div>
+                            </form>
 
                             <!-- <div class="card w-100 shadow-none bg-transparent bg-transparent-card border-0 p-0 mb-0">
                                 <div class="owl-carousel category-card owl-theme overflow-hidden nav-none">
@@ -308,13 +323,12 @@
                             </div> -->
 
                             <?php
-                                $post = new Post;
                                 $post_data = $post->show();
                                 foreach($post_data as $item){
                             ?>
                             <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-0">
                                 <div class="card-body p-0 d-flex">
-                                    <figure class="avatar me-3"><img src="assets/images/user-8.png" alt="image" class="shadow-sm rounded-circle w45"></figure>
+                                    <figure class="avatar me-3"><img src="master/photos/<?php echo $item->profile_image; ?>" alt="image" class="shadow-sm rounded-circle w45"></figure>
                                     <h4 class="fw-700 text-grey-900 font-xssss mt-1"><?php echo $item->first_name; ?> <?php echo $item->last_name; ?><span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">2 hour ago</span></h4>
                                     <a href="#" class="ms-auto"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a>
                                 </div>
@@ -330,7 +344,7 @@
                                             </div>
                                         </div>
                                     <?php
-                                        }else if($item->post_type_id == "video"){
+                                        }elseif($item->post_type_id == "video"){
                                     ?>
                                         <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
                                             <a href="" class="video-btn">

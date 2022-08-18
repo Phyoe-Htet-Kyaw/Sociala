@@ -8,7 +8,7 @@
         echo "<script>window.location.href='/Sociala/master/post_index.php'</script>";
     }
 
-    if($task->update($_GET, $_POST)){
+    if($task->update($_GET, $_POST, $_FILES)){
         echo "<script>window.location.href='/Sociala/master/post_index.php'</script>";
     }
 ?>
@@ -27,35 +27,41 @@
             <div class="form-group">
               <label>Edit Post</label>
             </div>
-            <form action="" method="post">                  
-                <div class="col-3">
+            <form action="" method="post" enctype="multipart/form-data">                  
+              <div class="col-12">
+                  <div class="form-group">
+                  <textarea name="description" class="form-control" rows="5" placeholder="Enter Post Description"><?php echo $res->description; ?></textarea>
+                  </div>
+              </div>
+                <div class="col-6">
                     <div class="form-group">
-                        <label for="user">Choose user</label>
+                        <label for="user">User</label>
                         <select name="user" id="user" class="form-control">
-                            <?php
-                                $user = new User;
-                                $user_data = $user->show();
-                                foreach($user_data as $item){
-                            ?>
-                                <option value="<?php echo $item->id; ?>" <?php if($item->id == $res->user_id) echo "selected"; ?>> <?php echo $item->first_name; ?> <?php echo $item->last_name; ?></option>
-                            <?php
-                                }
-                            ?>
+                            <option value="<?php echo $res->id; ?>"><?php echo $res->first_name; ?> <?php echo $res->last_name; ?></option>
                         </select>
                     </div>  
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                     <div class="form-group">
-                    <textarea name="description" class="form-control" rows="5"><?php echo $res->description; ?></textarea>
+                        <label for="exampleInputFile">Photo</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="photo" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Choose Photo</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12">
-                    <label for="post_type">Choose Post Type</label>
-                        <select name="post_type" id="post_type" class="form-control">
-                            <option value="1" <?php if($res->post_type_id == "text") echo "selected"; ?>>Text</option>
-                            <option value="2" <?php if($res->post_type_id == "photo") echo "selected"; ?>>Photo</option>
-                            <option value="3" <?php if($res->post_type_id == "video") echo "selected"; ?>>Video</option>
-                        </select>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="exampleInputFile">Video</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="video" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Choose Video</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12">                  
                     <div class="form-group">

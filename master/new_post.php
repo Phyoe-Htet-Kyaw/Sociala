@@ -18,19 +18,23 @@
             </div>
             <?php
               $post = new Post;
-              if($post->add($_POST)){
+              if($post->add($_POST, $_FILES)){
                 echo "<script>window.location.href='/Sociala/master/post_index.php'</script>";
               }
             ?>
-            <form action="" method="post">                  
-                <div class="col-3">
+            <form action="" method="post" enctype="multipart/form-data">                  
+              <div class="col-12">
+                  <div class="form-group">
+                  <textarea name="description" class="form-control" rows="5" placeholder="Enter Post Description"></textarea>
+                  </div>
+              </div>
+                <div class="col-6">
                     <div class="form-group">
                         <label for="user">Choose user</label>
                         <select name="user" id="user" class="form-control">
                             <?php
                                 $user = new User;
                                 $user_data = $user->show();
-
                                 foreach($user_data as $item){
                             ?>
                                 <option value="<?php echo $item->id; ?>"> <?php echo $item->first_name; ?> <?php echo $item->last_name; ?></option>
@@ -40,19 +44,26 @@
                         </select>
                     </div>  
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                     <div class="form-group">
-                    <textarea name="description" class="form-control" rows="5" placeholder="Enter Post Description"></textarea>
+                        <label for="exampleInputFile">Photo</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="photo" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Choose Photo</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                     <div class="form-group">
-                        <label for="post_type">Choose Post Type</label>
-                        <select name="post_type" id="post_type" class="form-control">
-                            <option value="1">Text</option>
-                            <option value="2">Photo</option>
-                            <option value="3">Video</option>
-                        </select>
+                        <label for="exampleInputFile">Video</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="video" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Choose Video</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">                  

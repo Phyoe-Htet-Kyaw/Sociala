@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 13, 2022 at 07:30 AM
+-- Generation Time: Aug 18, 2022 at 06:37 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -223,7 +223,7 @@ CREATE TABLE `tbl_post` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `description` longtext NOT NULL,
-  `post_type_id` enum('text','photo','video') DEFAULT NULL,
+  `post_type_id` enum('text','photo','video','all') DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -234,13 +234,11 @@ CREATE TABLE `tbl_post` (
 --
 
 INSERT INTO `tbl_post` (`id`, `user_id`, `description`, `post_type_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', 'photo', '2022-08-13 04:48:54', '2022-08-13 06:07:05', NULL),
-(2, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga!', 'video', '2022-08-13 04:49:12', '2022-08-13 06:06:57', NULL),
-(3, 1, 'Test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test', 'photo', '2022-08-13 04:07:40', '2022-08-13 06:07:40', NULL),
-(4, 1, 'Post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post post', 'video', '2022-08-13 04:48:43', '2022-08-13 06:07:31', NULL),
-(5, 1, 'Testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', 'photo', '2022-08-13 05:08:29', '2022-08-13 06:07:21', NULL),
-(6, 1, 'New post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post new post', 'photo', '2022-08-13 05:08:37', NULL, NULL),
-(7, 1, 'New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo New Photo ', 'photo', '2022-08-12 23:22:21', NULL, NULL);
+(27, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', 'text', '2022-08-13 23:49:39', NULL, NULL),
+(28, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', 'photo', '2022-08-13 23:49:59', NULL, NULL),
+(29, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', 'video', '2022-08-13 23:50:14', NULL, NULL),
+(30, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', 'all', '2022-08-13 23:50:44', NULL, NULL),
+(32, 2, 'This is an updated post right now', 'text', '2022-08-18 16:25:30', '2022-08-18 18:25:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -262,11 +260,9 @@ CREATE TABLE `tbl_post_photo` (
 --
 
 INSERT INTO `tbl_post_photo` (`id`, `post_id`, `photo`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'POST_1660228585_portfolio-1.jpg', '2022-08-11 14:41:03', '2022-08-11 16:36:25', NULL),
-(2, 3, 'POST_1660228594_portfolio-2.jpg', '2022-08-13 04:50:44', '2022-08-11 16:38:18', NULL),
-(3, 7, 'POST_1660228641_portfolio-3.jpg', '2022-08-13 04:51:03', '2022-08-11 17:17:53', NULL),
-(4, 5, 'POST_1660228673_portfolio-4.jpg', '2022-08-13 04:52:16', '2022-08-11 17:18:14', NULL),
-(5, 6, 'POST_1660228743_portfolio-5.jpg', '2022-08-13 04:52:23', '2022-08-11 17:18:44', NULL);
+(9, 28, 'POST_1660450799_photo-1.jpg', '2022-08-13 23:49:59', NULL, NULL),
+(10, 30, 'POST_1660450844_7e91975d-e898-4280-a2c4-6977f46502bb_200x200.PNG', '2022-08-13 23:50:44', NULL, NULL),
+(11, 32, 'POST_1660839621_photo-2.jpg', '2022-08-18 11:50:21', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -288,8 +284,8 @@ CREATE TABLE `tbl_post_video` (
 --
 
 INSERT INTO `tbl_post_video` (`id`, `post_id`, `video`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 2, 'POST_1660232790_video-1.mp4', '2022-08-13 04:51:13', '2022-08-11 17:46:30', NULL),
-(2, 4, 'POST_1660232736_video-2.mp4', '2022-08-13 04:51:17', NULL, NULL);
+(5, 29, 'POST_1660450814_video-1.mp4', '2022-08-13 23:50:14', NULL, NULL),
+(6, 30, 'POST_1660450844_video-2.mp4', '2022-08-13 23:50:44', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -314,7 +310,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `email`, `password`, `phone`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Phyoe', 'Htet Kyaw', 'pphyoe126@gmail.com', '$2y$10$LTh9aSYeqgW8PBBPFkHqjufyek2p.19FkLb75OTMV5dQYPyK2ix6.', NULL, '2022-08-13 04:35:39', NULL, NULL);
+(1, 'Phyoe', 'Htet Kyaw', 'pphyoe126@gmail.com', '$2y$10$LTh9aSYeqgW8PBBPFkHqjufyek2p.19FkLb75OTMV5dQYPyK2ix6.', NULL, '2022-08-13 04:35:39', NULL, NULL),
+(2, 'Min', 'Thurein Kyaw', 'minthureinkyaw@live.com', '$2y$10$/aS/bfkaN391S0te1KUIMeEEVCGDoF/5SUzDfFvKH6ImgfS7pg.72', NULL, '2022-08-15 05:11:06', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -344,7 +341,8 @@ CREATE TABLE `tbl_user_info` (
 --
 
 INSERT INTO `tbl_user_info` (`id`, `user_id`, `job_title`, `position_id`, `country_id`, `city_id`, `postcode`, `address`, `profile_image`, `cover_photo`, `about_description`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Senior Web Developer', 8, 1, 1, 101010, 'No(54), Main Road, Red Hill Township', 'USER_1658255809_avatar5.png', 'USER_1658255638_avatar2.png', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', '2022-08-13 04:39:45', NULL, NULL);
+(1, 1, 'Senior Web Developer', 8, 1, 1, 101010, 'No(54), Main Road, Red Hill Township', 'profile1.png', 'cover1.png', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id vero sunt voluptas expedita mollitia accusamus aliquid asperiores? Similique doloribus magnam, iure mollitia quas, tempore magni soluta vitae debitis repellat fuga.', '2022-08-17 16:06:21', NULL, NULL),
+(2, 2, 'Junior Web Developer', 8, 12, 26, 123123, '1629 K St Suite 300, N.W', 'profile2.png', 'cover2.png', 'Just an ordinary guy.', '2022-08-17 16:13:59', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -436,31 +434,31 @@ ALTER TABLE `tbl_position`
 -- AUTO_INCREMENT for table `tbl_post`
 --
 ALTER TABLE `tbl_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `tbl_post_photo`
 --
 ALTER TABLE `tbl_post_photo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_post_video`
 --
 ALTER TABLE `tbl_post_video`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_user_info`
 --
 ALTER TABLE `tbl_user_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

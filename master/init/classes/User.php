@@ -13,5 +13,15 @@
             $res = $stmt->fetchAll(PDO::FETCH_OBJ);
             return $res;
         }
+
+        public function userinfo(){
+            $user = $_COOKIE['user_id'];
+            $sql = "SELECT * FROM tbl_user_info WHERE user_id=:user";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam("user", $user, PDO::PARAM_INT);
+            $stmt->execute();
+            $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $res;
+        }
     }
 ?>

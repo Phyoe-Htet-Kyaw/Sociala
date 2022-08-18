@@ -33,7 +33,7 @@
                     <tr>
                       <td><?php echo $i; $i++; ?></td>
                       <td><?php echo $item->post_id; ?></td>
-                      <td><img src="videos/<?php echo $item->video ?>" width="100"></td>
+                      <td><video width="160" height="120" controls><source src="videos/<?php echo $item->video ?>" width="100"></video></td>
                       <td>
                         <a href="video_edit.php?id=<?php echo $item->id; ?>"><button type="button" class="btn btn-warning btn-sm">Edit</button></a>
                         <a href="video_delete.php?id=<?php echo $item->id; ?>"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
