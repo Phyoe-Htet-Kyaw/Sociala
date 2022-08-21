@@ -43,7 +43,10 @@
                         $photo_name = "POST_" . time() . "_" .$file['photo']['name'];
                         $photo_tmp_name = $file['photo']['tmp_name'];
                         $photo_upload = "photos/";
-                        if(move_uploaded_file($photo_tmp_name, $photo_upload.$photo_name)){
+                        if(
+                            move_uploaded_file($photo_tmp_name, $photo_upload.$photo_name) ||
+                            move_uploaded_file($photo_tmp_name, 'master/'.$photo_upload.$photo_name)
+                        ){
                             $timestamp = date("Y-m-d H:i:s");
                             $photo_sql = "INSERT INTO tbl_post_photo (post_id, photo, created_at) VALUES (:post_id, :photo, :timestamp)";
                             $photo_stmt = $this->con->prepare($photo_sql);
@@ -58,7 +61,10 @@
                         $video_name = "POST_" . time() . "_" .$file['video']['name'];
                         $video_tmp_name = $file['video']['tmp_name'];
                         $video_upload = "videos/";
-                        if(move_uploaded_file($video_tmp_name, $video_upload.$video_name)){
+                        if(
+                            move_uploaded_file($video_tmp_name, $video_upload.$video_name) ||
+                            move_uploaded_file($video_tmp_name, 'master/'.$video_upload.$video_name)
+                        ){
                             $timestamp = date("Y-m-d H:i:s");
                             $video_sql = "INSERT INTO tbl_post_video (post_id, video, created_at) VALUES (:post_id, :video, :timestamp)";
                             $video_stmt = $this->con->prepare($video_sql);

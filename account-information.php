@@ -2,7 +2,6 @@
     include 'inc/header.php';
     include 'inc/nav-left.php'; 
 ?>
-   
         <!-- main content -->
         <div class="main-content bg-lightblue theme-dark-bg right-chat-active">
             
@@ -10,39 +9,83 @@
                 <div class="middle-sidebar-left">
                     <div class="middle-wrap">
                         <div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
-                            
-                            <div class="card-body p-lg-5 p-4 w-100 border-0">
+                            <div class="card-body p-4 w-100 bg-current border-0 d-flex rounded-3">
+                                <a href="settings.php" class="d-inline-block mt-2"><i class="ti-arrow-left font-sm text-white"></i></a>
+                                <h4 class="font-xs text-white fw-600 ms-4 mb-0 mt-2">Account Details</h4>
+                            </div>
+                            <div class="card-body p-lg-5 p-4 w-100 border-0 ">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-4 text-center">
+                                    <figure class="avatar ms-auto me-auto mb-0 mt-2 w100"><img src="assets/images/pt-1.jpg" alt="image" class="shadow-sm rounded-3 w-100"></figure>
+                                    <h2 class="fw-700 font-sm text-grey-900 mt-3">Surfiya Zakir</h2>
+                                    <h4 class="text-grey-500 fw-500 mb-3 font-xsss mb-4">Brooklyn</h4>    
+                                    <!-- <a href="#" class="p-3 alert-primary text-primary font-xsss fw-500 mt-2 rounded-3">Upload New Photo</a> -->
+                                </div>
+                            </div>
+
+                            <form action="#">
                                 <div class="row">
-                                    <div class="col-lg-12">
-                                        <h4 class="mb-4 font-xxl fw-700 mont-font mb-lg-5 mb-4 font-md-xs">Settings</h4>
-                                        <div class="nav-caption fw-600 font-xssss text-grey-500 mb-2">Genaral</div>
-                                        <ul class="list-inline mb-4">
-                                            <li class="list-inline-item d-block border-bottom me-0"><a href="account-information.php" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-home font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Acount Information</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
-                                            <li class="list-inline-item d-block border-bottom me-0"><a href="contact-information.php" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-gold-gradiant text-white feather-map-pin font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Saved Address</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
-                                            <li class="list-inline-item d-block me-0"><a href="social.php" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-red-gradiant text-white feather-twitter font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Social Acount</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
-                                        </ul>
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label class="mont-font fw-600 font-xsss">First Name</label>
+                                            <input type="text" class="form-control">
+                                        </div>        
+                                    </div>
 
-                                        <div class="nav-caption fw-600 font-xsss text-grey-500 mb-2">Acount</div>
-                                        <ul class="list-inline mb-4">
-                                            <li class="list-inline-item d-block border-bottom me-0"><a href="payment.php" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-mini-gradiant text-white feather-credit-card font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">My Cards</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
-                                            <li class="list-inline-item d-block  me-0"><a href="password.php" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-blue-gradiant text-white feather-inbox font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Password</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
-                                            
-                                        </ul>
-
-                                        <div class="nav-caption fw-600 font-xsss text-grey-500 mb-2">Other</div>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item d-block border-bottom me-0"><a href="default-notification.php" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-gold-gradiant text-white feather-bell font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Notification</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
-                                            <li class="list-inline-item d-block border-bottom me-0"><a href="help-box.php" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-help-circle font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Help</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
-                                            <li class="list-inline-item d-block me-0"><a href="logout.php" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-red-gradiant text-white feather-lock font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Logout</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
-                               
-                                        </ul>
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label class="mont-font fw-600 font-xsss">Last Name</label>
+                                            <input type="text" class="form-control">
+                                        </div>        
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label class="mont-font fw-600 font-xsss">Email</label>
+                                            <input type="text" class="form-control">
+                                        </div>        
+                                    </div>
 
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label class="mont-font fw-600 font-xsss">Phone</label>
+                                            <input type="text" class="form-control">
+                                        </div>        
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-lg-12 mb-3">
+                                        <div class="card mt-3 border-0">
+                                            <div class="card-body d-flex justify-content-between align-items-end p-0">
+                                                <div class="form-group mb-0 w-100">
+                                                    <input type="file" name="file" id="file" class="input-file">
+                                                    <label for="file" class="rounded-3 text-center bg-white btn-tertiary js-labelFile p-4 w-100 border-dashed">
+                                                    <i class="ti-cloud-down large-icon me-3 d-block"></i>
+                                                    <span class="js-fileName">Drag and drop or click to replace</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="mont-font fw-600 font-xsss">Description</label>
+                                        <textarea class="form-control mb-0 p-3 h100 bg-greylight lh-16" rows="5" placeholder="Write your message..." spellcheck="false"></textarea>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <a href="#" class="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block">Save</a>
+                                    </div>
+                                </div>
+
+                            </form>
                             </div>
                         </div>
-                        
+                        <!-- <div class="card w-100 border-0 p-2"></div> -->
                     </div>
                 </div>
                  
@@ -50,8 +93,7 @@
         </div>
         <!-- main content -->
 
-        <!-- right chat -->
-        <!-- right chat -->
+                <!-- right chat -->
         <div class="right-chat nav-wrap mt-2 right-scroll-bar">
             <div class="middle-sidebar-right-content bg-white shadow-xss rounded-xxl">
 
@@ -89,7 +131,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center">
                             <figure class="avatar float-left mb-0 me-2">
-                                <img src="images/user-8.png" alt="image" class="w35">
+                                <img src="assets/images/user-8.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
                                 <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Hurin Seary</a>
@@ -98,7 +140,7 @@
                         </li>
                         <li class="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center">
                             <figure class="avatar float-left mb-0 me-2">
-                                <img src="images/user-7.png" alt="image" class="w35">
+                                <img src="assets/images/user-7.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
                                 <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Victor Exrixon</a>
@@ -107,7 +149,7 @@
                         </li>
                         <li class="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center">
                             <figure class="avatar float-left mb-0 me-2">
-                                <img src="images/user-6.png" alt="image" class="w35">
+                                <img src="assets/images/user-6.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
                                 <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Surfiya Zakir</a>
@@ -116,7 +158,7 @@
                         </li>
                         <li class="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center">
                             <figure class="avatar float-left mb-0 me-2">
-                                <img src="images/user-5.png" alt="image" class="w35">
+                                <img src="assets/images/user-5.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
                                 <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Goria Coast</a>
@@ -125,7 +167,7 @@
                         </li>
                         <li class="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center">
                             <figure class="avatar float-left mb-0 me-2">
-                                <img src="images/user-4.png" alt="image" class="w35">
+                                <img src="assets/images/user-4.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
                                 <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Hurin Seary</a>
@@ -134,7 +176,7 @@
                         </li>
                         <li class="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center">
                             <figure class="avatar float-left mb-0 me-2">
-                                <img src="images/user-3.png" alt="image" class="w35">
+                                <img src="assets/images/user-3.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
                                 <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">David Goria</a>
@@ -143,7 +185,7 @@
                         </li>
                         <li class="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center">
                             <figure class="avatar float-left mb-0 me-2">
-                                <img src="images/user-2.png" alt="image" class="w35">
+                                <img src="assets/images/user-2.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
                                 <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Seary Victor</a>
@@ -152,7 +194,7 @@
                         </li>
                         <li class="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center">
                             <figure class="avatar float-left mb-0 me-2">
-                                <img src="images/user-12.png" alt="image" class="w35">
+                                <img src="assets/images/user-12.png" alt="image" class="w35">
                             </figure>
                             <h3 class="fw-700 mb-0 mt-0">
                                 <a class="font-xssss text-grey-600 d-block text-dark model-popup-chat" href="#">Ana Seary</a>
