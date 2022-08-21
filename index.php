@@ -333,7 +333,16 @@
                                     <a href="#" class="ms-auto"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a>
                                 </div>
                                 <div class="card-body p-0 me-lg-5">
-                                    <p class="fw-500 text-grey-500 lh-26 font-xssss w-100 mb-2"><?php echo $item->description; ?><a href="#" class="fw-600 text-primary ms-2">See more</a></p>
+                                    <p class="fw-500 text-grey-500 lh-26 font-xssss w-100 mb-2">
+                                        <?php 
+                                            echo substr($item->description, 0, 200); 
+                                            if(strlen($item->description) > 200){
+                                            ?>
+                                                <a href="#" class="fw-600 text-primary ms-2">See more</a>
+                                            <?php
+                                            }
+                                        ?>
+                                    </p>
                                 </div>
                                     <?php
                                         if($item->post_type_id == "photo"){

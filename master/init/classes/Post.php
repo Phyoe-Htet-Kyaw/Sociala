@@ -116,18 +116,19 @@
                     echo "Please write your message!";
                 }else{
                     
+                    $val_photo_sql = "SELECT COUNT(*) AS count FROM tbl_post_photo WHERE post_id=:post";
+                    $val_photo_stmt = $this->con->prepare($val_photo_sql);
+                    $val_photo_stmt->bindParam("post", $id, PDO::PARAM_INT);
+                    $val_photo_stmt->execute();
+                    $val_photo_res = $val_photo_stmt->fetch(PDO::FETCH_OBJ);
+
                     if($file['photo']['size'] > 0){
                         $photo_name = "POST_" . time() . "_" .$file['photo']['name'];
                         $photo_tmp_name = $file['photo']['tmp_name'];
                         $photo_upload = "photos/";
                         if(move_uploaded_file($photo_tmp_name, $photo_upload.$photo_name)){
-                            $val_photo_sql = "SELECT id FROM tbl_post_photo WHERE post_id=:post";
-                            $val_photo_stmt = $this->con->prepare($val_photo_sql);
-                            $val_photo_stmt->bindParam("post", $id, PDO::PARAM_INT);
-                            $val_photo_stmt->execute();
-                            $val_photo_res = $val_photo_stmt->fetch(PDO::FETCH_OBJ);
                             
-                            if(count($val_photo_res) == 0){
+                            if($val_photo_res->count == 0){
                                 $timestamp = date("Y-m-d H:i:s");
                                 $photo_sql = "INSERT INTO tbl_post_photo (post_id, photo, created_at) VALUES (:post_id, :photo, :timestamp)";
                                 $photo_stmt = $this->con->prepare($photo_sql);
@@ -141,6 +142,13 @@
                                 $new_photo_stmt->bindParam("id", $id, PDO::PARAM_INT);
                                 $new_photo_stmt->execute();
                             }else{
+                                $new_photo_sql = "SELECT * FROM tbl_post_photo WHERE post_id=:id";
+                                $new_photo_stmt = $this->con->prepare($new_photo_sql);
+                                $new_photo_stmt->bindParam("id", $id, PDO::PARAM_INT);
+                                $new_photo_stmt->execute();
+                                $res_photo = $new_photo_stmt->fetch(PDO::FETCH_OBJ);
+                                unlink('photos/'.$res_photo->photo);
+
                                 $timestamp = date("Y-m-d H:i:s");
                                 $photo_sql = "UPDATE tbl_post_photo SET post_id=:post_id, photo=:photo, updated_at=:timestamp WHERE post_id=:id";
                                 $photo_stmt = $this->con->prepare($photo_sql);
@@ -150,28 +158,23 @@
                                 $photo_stmt->bindParam("id", $id, PDO::PARAM_INT);
                                 $photo_stmt->execute();
 
-                                $new_photo_sql = "SELECT * FROM tbl_post_photo WHERE post_id=:id";
-                                $new_photo_stmt = $this->con->prepare($new_photo_sql);
-                                $new_photo_stmt->bindParam("id", $id, PDO::PARAM_INT);
-                                $new_photo_stmt->execute();
-                                $res_photo = $new_photo_stmt->fetch(PDO::FETCH_OBJ);
-                                unlink('photos/'.$res_photo->photo);
                             }
                         }
                     }
+
+                    $val_video_sql = "SELECT COUNT(*) AS count FROM tbl_post_video WHERE post_id=:post";
+                    $val_video_stmt = $this->con->prepare($val_video_sql);
+                    $val_video_stmt->bindParam("post", $id, PDO::PARAM_INT);
+                    $val_video_stmt->execute();
+                    $val_video_res = $val_video_stmt->fetch(PDO::FETCH_OBJ);
 
                     if($file['video']['size'] > 0){
                         $video_name = "POST_" . time() . "_" .$file['video']['name'];
                         $video_tmp_name = $file['video']['tmp_name'];
                         $video_upload = "videos/";
                         if(move_uploaded_file($video_tmp_name, $video_upload.$video_name)){
-                            $val_video_sql = "SELECT id FROM tbl_post_video WHERE post_id=:post";
-                            $val_video_stmt = $this->con->prepare($val_video_sql);
-                            $val_video_stmt->bindParam("post", $id, PDO::PARAM_INT);
-                            $val_video_stmt->execute();
-                            $val_video_res = $val_video_stmt->fetch(PDO::FETCH_OBJ);
                             
-                            if(count($val_video_res) == 0){
+                            if($val_video_res->count == 0){
                                 $timestamp = date("Y-m-d H:i:s");
                                 $video_sql = "INSERT INTO tbl_post_video (post_id, video, created_at) VALUES (:post_id, :video, :timestamp)";
                                 $video_stmt = $this->con->prepare($video_sql);
@@ -185,6 +188,13 @@
                                 $new_video_stmt->bindParam("id", $id, PDO::PARAM_INT);
                                 $new_video_stmt->execute();
                             }else{
+                                $new_video_sql = "SELECT * FROM tbl_post_video WHERE post_id=:id";
+                                $new_video_stmt = $this->con->prepare($new_video_sql);
+                                $new_video_stmt->bindParam("id", $id, PDO::PARAM_INT);
+                                $new_video_stmt->execute();
+                                $res_video = $new_video_stmt->fetch(PDO::FETCH_OBJ);
+                                unlink('videos/'.$res_video->video);
+
                                 $timestamp = date("Y-m-d H:i:s");
                                 $video_sql = "UPDATE tbl_post_video SET post_id=:post_id, video=:video, updated_at=:timestamp WHERE post_id=:id";
                                 $video_stmt = $this->con->prepare($video_sql);
@@ -194,21 +204,23 @@
                                 $video_stmt->bindParam("id", $id, PDO::PARAM_INT);
                                 $video_stmt->execute();
 
-                                $new_video_sql = "SELECT * FROM tbl_post_video WHERE post_id=:id";
-                                $new_video_stmt = $this->con->prepare($new_video_sql);
-                                $new_video_stmt->bindParam("id", $id, PDO::PARAM_INT);
-                                $new_video_stmt->execute();
-                                $res_video = $new_video_stmt->fetch(PDO::FETCH_OBJ);
-                                unlink('videos/'.$res_video->video);
                             }
                         }
                     }
 
-                    if(count($val_photo_res) > 0 && count($val_video_res) == 0){
+                    // echo "<pre>";
+                    // print_r($val_photo_res->count);
+                    // echo "</pre>";
+                    // echo "<pre>";
+                    // print_r($val_video_res->count);
+                    // echo "</pre>";
+                    // die();
+                    
+                    if($val_photo_res->count > 0 && $val_video_res->count == 0){
                         $post_type = "photo";
-                    }else if(count($val_photo_res) == 0 && count($val_video_res) > 0){
+                    }else if($val_photo_res->count == 0 && $val_video_res->count > 0){
                         $post_type = "video";
-                    }else if(count($val_photo_res) > 0 && count($val_video_res) > 0){
+                    }else if($val_photo_res->count > 0 && $val_video_res->count > 0){
                         $post_type = "all";
                     }else{
                         $post_type = "text";

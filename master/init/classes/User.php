@@ -23,5 +23,7 @@
             $res = $stmt->fetchAll(PDO::FETCH_OBJ);
             return $res;
         }
+
+        
     }
 ?>
